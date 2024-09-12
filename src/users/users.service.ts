@@ -5,15 +5,20 @@ import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { catchError, from, map, mergeAll, Observable, of, take } from 'rxjs';
 import axios, { AxiosResponse } from 'axios';
+import { usersT } from './entities/interfaces/user.interface';
 
 @Injectable()
 export class UsersService {
   private readonly baseUrl = 'https://jsonplaceholder.typicode.com/users';
+
   create(createUserDto: CreateUserDto) {
-    return 'This action adds a new user';
+    return 'Register was success';
   }
 
   allUsers(): Observable<usersT[] | unknown> {
+    if (Math.random() > 0.75) {
+      throw new Error('error');
+    }
     return from(axios.get(this.baseUrl)).pipe(
       map((res: AxiosResponse) => res.data),
       catchError(err => {

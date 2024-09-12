@@ -1,6 +1,6 @@
 /** @format */
 
-interface usersT {
+export interface usersT {
   id: 1;
   name: String;
   username: String;
