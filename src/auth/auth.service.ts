@@ -36,7 +36,7 @@ export class AuthService {
   //prettier-ignore
   getUserByPassAndEmail(obj: objT): Promise<AuthDocument> {
     try {
-      return this.AuthModel.findOne(obj).select('-__v');
+      return this.AuthModel.findOne(obj).select('-__v').exec();
     } catch (err) {
       return err;
     }

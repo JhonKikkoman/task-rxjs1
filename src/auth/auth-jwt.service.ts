@@ -14,7 +14,9 @@ export class AuthJwtService {
   async validateUser(obj: any) {
     try {
       const user = await this.authService.getUserByPassAndEmail(obj);
-      return user ? `Welcome ${user.firstName} ${user.lastName}!` : null;
+      return user
+        ? `Welcome ${user.firstName} @mail - ${user.email}! ID-${user._id}`
+        : null;
     } catch (err) {
       return err;
     }
